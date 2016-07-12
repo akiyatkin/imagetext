@@ -1,0 +1,8 @@
+{
+	"tpl":"-imagetext/advantage.tpl",
+	"domready":true,
+	"config":{
+		"height":360
+	},
+	"json":"-imagetext/?src=~advantage/"
+}

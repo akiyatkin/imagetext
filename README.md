@@ -33,4 +33,12 @@
 }
 ```
 
-[Пример](http://akm63.ru)
+### Виджит преимущества
+```json
+{
+	"external":"-imagetext/advantage.layer.json"
+}
+```
+
+Примеры
+[akm63.ru](http://akm63.ru), [centr-gravirovki.ru](http://centr-gravirovki.ru)
