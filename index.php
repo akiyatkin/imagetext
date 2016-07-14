@@ -14,7 +14,10 @@ if (!is_file('vendor/autoload.php')) {
 
 $ans = array();
 
-
+$lim = Ans::GET('lim','string','0,100');
+$p = explode(',', $lim);
+if (sizeof($p) != 2) return Ans::err($ans, 'Некорректный параметр lim');
+list($start, $count) = $p;
 
 $dir = Ans::GET('src','string');
 if (!$dir) return Ans::err($ans, 'Укажите обязательный параметр src');
@@ -34,10 +37,16 @@ $list = Access::cache(__FILE__, function ($dir) {
 
 		$src = Rubrics::find($dir, $fd['name'], 'articles');
 		if ($src) $slide['title'] = Rubrics::article($src);
-		$list[] = $slide;	
+		$list[] = $slide;
+
+		Load::sort($list);
+
 	}, scandir(Path::theme($dir)));
+	//$list = array_reverse($list);
 	return $list;
 }, array($dir));
+
+$list = array_slice($list, $start, $count);
 
 
 $ans['dir'] = $dir;
