@@ -1,8 +1,9 @@
 <div class="imagetextadv">
 	<style scoped>
 		.imagetextadv h1 {
-			font-size:150%;
+			font-size:140%;
 			margin-top:10px;
+			margin-bottom:20px;
 		}
 		.imagetextadv .descr {
 			height: {config.height}px;
