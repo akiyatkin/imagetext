@@ -23,7 +23,9 @@ $dir = Ans::GET('src','string');
 if (!$dir) return Ans::err($ans, 'Укажите обязательный параметр src');
 if (!Path::isNest('~', $dir)) return Ans::err($ans, 'Указан небезопасный путь src');
 
-$list = Access::cache(__FILE__, function ($dir) {
+$order = Ans::GET('order',['descending','ascending']);
+$ans['order'] = $order;
+$list = Access::cache(__FILE__, function ($dir, $order) {
 	$list = array();
 	array_map(function ($file) use (&$list, $dir) {
 		if ($file{0} == '.') return;
@@ -38,13 +40,12 @@ $list = Access::cache(__FILE__, function ($dir) {
 		$src = Rubrics::find($dir, $fd['name'], 'articles');
 		if ($src) $slide['title'] = Rubrics::article($src);
 		$list[] = $slide;
-
-		Load::sort($list);
-
 	}, scandir(Path::theme($dir)));
+
+	Load::sort($list, $order);
 	//$list = array_reverse($list);
 	return $list;
-}, array($dir));
+}, array($dir, $order));
 
 $list = array_slice($list, $start, $count);
 

@@ -13,9 +13,11 @@
 
 ## Использование
 
-Данные в json доступны по адресу ```/-imagetext/?src=~путь до папки/```
+Данные в json доступны по адресу ```/-imagetext/?src=~путь до папки/&order=ascending```
 Папка должна быть в data/ согласно правилам [infrajs/path](http://github.com/infrajs/path)
-Должен быть настроен [infrajs/router](http://github.com/infrajs/router)
+Должен быть настроен [infrajs/router](http://github.com/infrajs/router).
+
+Параметр ```order``` может быть ascending или descending распространяется только на порядок названий с цифрами в начале. Буквы сортируются в порядке алфавита в обоих случаях. Согласно расширению [infrajs/load](http://github.com/infrajs/load).
 
 ## Готовые слои
 
