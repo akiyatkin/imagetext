@@ -2,7 +2,6 @@
 	"name": "akiyatkin/imagetext",
 	"homepage":"https://github.com/akiyatkin/imagetext",
 	"description": "Данные из папки картинка и текст",
-	"license": "GPL3",
 	"require":{
 		"infrajs/ans":"~1",
 		"infrajs/load":"~1",
