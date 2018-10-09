@@ -75,21 +75,21 @@
 {showtext:}
 	<div class="text"{~first():firstshow}>
 		<div class="row">
-			<div class="col-sm-8">
+			<div class="col-md-8">
 				{title}
 			</div>
-			<div class="col-sm-4">
-				<img class="img-responsive" src="/{...dir}{file}">
+			<div class="col-md-4">
+				<img class="img-fluid" src="/{...dir}{file}">
 			</div>
 		</div>
 	</div>
 	{firstshow:} style="display:block"
 {showname:}
-	<div class="col-xs-4 col-sm-2 step">
+	<div class="col-4 col-md-2 step">
 		<div class="row">
-			<div class="col-xs-12 col-sm-12 num">
-				<img class="img-responsive" src="/{...dir}{file}">
+			<div class="col num">
+				<img class="img-fluid" src="/{...dir}{file}">
 			</div>
 		</div>
-		<div class="title hidden-xs">{name}</div>
+		<div class="title d-none d-sm-block">{name}</div>
 	</div>
