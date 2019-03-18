@@ -24,10 +24,13 @@ if (!$dir) return Ans::err($ans, 'Укажите обязательный пар
 if (!Path::isNest('~', $dir)) return Ans::err($ans, 'Указан небезопасный путь src');
 
 $order = Ans::GET('order',['descending','ascending']);
+$html = Ans::GET('html');
 $ans['order'] = $order;
-$list = Access::cache(__FILE__, function ($dir, $order) {
+
+$list = Access::cache(__FILE__, function ($dir, $order, $html) {
 	$list = array();
-	array_map(function ($file) use (&$list, $dir) {
+
+	array_map(function ($file) use (&$list, $dir, $html) {
 		if ($file{0} == '.') return;
 		$file = Path::toutf($file);
 		if (!Path::theme($dir.$file)) return;
@@ -38,14 +41,17 @@ $list = Access::cache(__FILE__, function ($dir, $order) {
 		$slide['title'] = $fd['name'];
 
 		$src = Rubrics::find($dir, $fd['name'], 'articles');
-		if ($src) $slide['title'] = Rubrics::article($src);
+		if ($src) {
+			if($html) $slide['title'] = Rubrics::article($src);
+			else $slide['title'] = Load::loadTEXT($src);
+		}
 		$list[] = $slide;
 	}, scandir(Path::theme($dir)));
 
 	Load::sort($list, $order);
 	//$list = array_reverse($list);
 	return $list;
-}, array($dir, $order));
+}, array($dir, $order, $html));
 
 $list = array_slice($list, $start, $count);
 
