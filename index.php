@@ -6,12 +6,6 @@ use infrajs\rubrics\Rubrics;
 use infrajs\router\Router;
 use infrajs\access\Access;
 
-if (!is_file('vendor/autoload.php')) {
-	chdir('../');
-	require_once('vendor/autoload.php');
-	Router::init();
-}
-
 $ans = array();
 
 $lim = Ans::GET('lim','string','0,100');
@@ -42,7 +36,8 @@ $list = Access::cache(__FILE__, function ($dir, $order, $html) {
 
 		$src = Rubrics::find($dir, $fd['name'], 'articles');
 		if ($src) {
-			if($html) $slide['title'] = Rubrics::article($src);
+			$slide['src'] = $src;
+			if ($html) $slide['title'] = Rubrics::article($src);
 			else $slide['title'] = Load::loadTEXT($src);
 		}
 		$list[] = $slide;
