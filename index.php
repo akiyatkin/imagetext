@@ -32,13 +32,19 @@ $list = Access::cache(__FILE__, function ($dir, $order, $html) {
 
 		if (!in_array($fd['ext'], array('jpg', 'png'))) return;
 		$slide = $fd;
-		$slide['title'] = $fd['name'];
+		//$slide['title'] = $fd['name'];
 
 		$src = Rubrics::find($dir, $fd['name'], 'articles');
 		if ($src) {
 			$slide['src'] = $src;
-			if ($html) $slide['title'] = Rubrics::article($src);
-			else $slide['title'] = Load::loadTEXT($src);
+			if ($html) $slide['text'] = Rubrics::article($src);
+			else $slide['text'] = Load::loadTEXT($src);
+			$slide['title'] = $slide['text'];
+		}
+		$src = Rubrics::find($dir, $fd['name'], ['json']);
+		if ($src) {
+			$slide['json'] = $src;
+			$slide['data'] = Load::loadJSON($src);
 		}
 		$list[] = $slide;
 	}, scandir(Path::theme($dir)));
