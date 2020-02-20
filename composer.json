@@ -5,7 +5,6 @@
 	"require":{
 		"infrajs/ans":"~1",
 		"infrajs/load":"~1",
-		"ded/domready":"~1",
 		"infrajs/path":"~1",
 		"infrajs/rubrics":"~1",
 		"infrajs/router":"~1",
