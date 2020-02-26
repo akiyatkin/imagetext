@@ -1,5 +1,4 @@
 {
 	"tpl":"-imagetext/steps.tpl",
-	"domready":true,
 	"json":"-imagetext/?src=~steps/&order=ascending"
 }
