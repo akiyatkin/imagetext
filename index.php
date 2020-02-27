@@ -25,7 +25,7 @@ $list = Access::cache(__FILE__, function ($dir, $order, $html) {
 	$list = array();
 
 	array_map(function ($file) use (&$list, $dir, $html) {
-		if ($file{0} == '.') return;
+		if ($file[0] == '.') return;
 		$file = Path::toutf($file);
 		if (!Path::theme($dir.$file)) return;
 		$fd = Load::nameInfo($file);
