@@ -30,7 +30,7 @@ $list = Access::cache(__FILE__, function ($dir, $order, $html) {
 		if (!Path::theme($dir.$file)) return;
 		$fd = Load::nameInfo($file);
 
-		if (!in_array($fd['ext'], array('jpg', 'png'))) return;
+		if (!in_array($fd['ext'], array('jpg', 'png','webp'))) return;
 		$slide = $fd;
 		//$slide['title'] = $fd['name'];
 
