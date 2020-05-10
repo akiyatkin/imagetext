@@ -37,8 +37,9 @@
 		<a href="#step-text">
 			{data.list::showname}
 		</a>
-		<script>
-			domready( function () {
+		<script async type="module">
+			import { CDN } from '/vendor/akiyatkin/load/CDN.js'
+			CDN.load('jquery').then( function () {
 				var div = $('.imagetextsteps');
 				var steps = div.find('.step');
 				var texts = div.find('.text');
@@ -60,8 +61,8 @@
 					texts.stop().not(now).slideUp('slow');
 					now.slideDown('slow');
 					
-				});
-			});
+				})
+			})
 		</script>
 	</div>
 
