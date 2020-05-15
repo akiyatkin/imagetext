@@ -37,7 +37,7 @@
 		<a href="#step-text">
 			{data.list::showname}
 		</a>
-		<script async type="module">
+		<script type="module">
 			import { CDN } from '/vendor/akiyatkin/load/CDN.js'
 			CDN.load('jquery').then( function () {
 				var div = $('.imagetextsteps');
