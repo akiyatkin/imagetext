@@ -39,7 +39,7 @@
 		</a>
 		<script type="module">
 			import { CDN } from '/vendor/akiyatkin/load/CDN.js'
-			CDN.load('jquery').then( function () {
+			CDN.on('load','jquery').then( function () {
 				var div = $('.imagetextsteps');
 				var steps = div.find('.step');
 				var texts = div.find('.text');
